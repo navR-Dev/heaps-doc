@@ -4,6 +4,12 @@ This example draws tile layers from a [Tiled](http://www.mapeditor.org/) file (j
 
 The example uses a _tiles.json_ and _tiles.png_ file, that should be put in the resources (`/res`) folder.
 
+To create the _tiles.json_ and _tiles.png_ files:
+* Download the files in Heaps.io [samples](https://github.com/HeapsIO/heaps/tree/master/samples/tiled_res) in GitHub.
+* Open the `tileMap.tmx` file in [Tiled](http://www.mapeditor.org/)
+* Go to Map > Map Properties and change the Tile Layer format to CSV. Save as `tiles.json`. 
+* Copy the json file and the image to your `/res` folder
+
 ```haxe
 class Main extends hxd.App {
 	static function main() {
