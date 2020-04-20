@@ -3,6 +3,8 @@
 Making objects interactive is done creating a [`h2d.Interactive`](api/h2d/Interactive.html) instance. You provide it an interaction area and attach it to a sprite.
 
 ```haxe
+// Use the tile group created in the previous tutorial
+var mySprite = tileGroup;
 var interaction = new h2d.Interactive(300, 100, mySprite);
 interaction.onOver = function(event : hxd.Event) {
 	mySprite.alpha = 0.7;
@@ -51,9 +53,12 @@ hxd.Window.getInstance().addEventTarget(onEvent);
 You can use the static functions `hxd.Key.isPressed`, `hxd.Key.isDown` and `hxd.Key.isReleased`.
 
 ```haxe
-if (Key.isPressed(Key.SPACE)) {
-	trace("shoot!");
+function onEvent(event : hxd.Event) {
+	if (Key.isDown(Key.SPACE)) {
+        	trace("shoot!");
+ 	}
 }
+hxd.Window.getInstance().addEventTarget(onEvent);
 ```
 
 ## Resize events
