@@ -28,7 +28,7 @@ class Main extends hxd.App {
 		var tileImage  = hxd.Res.tiles_png.toTile();
 		
 		// create a TileGroup for fast tile rendering, attach to 2d scene
-		var group = new h2d.TileGroup(tileImage, s2d);
+		var tileGroup = new h2d.TileGroup(tileImage, s2d);
 		
 		var tw = mapData.tilewidth;
 		var th = mapData.tileheight;
@@ -50,7 +50,7 @@ class Main extends hxd.App {
 				var tid = layer.data[x + y * mw];
 				if (tid != 0) { // skip transparent tiles
 					// add a tile to the TileGroup
-					group.add(x * tw, y * mapData.tilewidth, tiles[tid - 1]);
+					tileGroup.add(x * tw, y * mapData.tilewidth, tiles[tid - 1]);
 				}
 			}
 		}
