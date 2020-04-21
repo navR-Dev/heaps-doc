@@ -40,7 +40,7 @@ p2.material.shadows = true;
 p2.material.color.setColor(Std.random(0x1000000));
 
 //Set up a light otherwise we don't get any shadows
-var directionalLight = new h3d.scene.DirLight(new h3d.Vector(-0.3, -0.2, -1), s3d);
+var directionalLight = new h3d.scene.fwd.DirLight(new h3d.Vector(-0.3, -0.2, -1), s3d);
 
 //Move our camera to a position to see the shadows
 s3d.camera.pos.set(12, 12, 6);
@@ -58,6 +58,7 @@ To create a more realistic effect you can change the power of your shadows. You 
 You can see an example here:
 
 ```haxe
+var shadow = s3d.renderer.getPass(h3d.pass.DefaultShadowMap);
 shadow.power = 10;
 shadow.color.setColor(0x301030);
 dir.enableSpecular = true;
