@@ -4,7 +4,7 @@ Filters apply to the display tree, so can be used to create screen effects.
 You can assign a filter to a `h2d.Sprite`. 
 
 ```haxe
-mySprite.filter = new Glow();
+mySprite.filter = new Blur();
 ```
 
 ## Build-in filters
