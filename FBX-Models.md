@@ -31,21 +31,35 @@ In order to add a FBX/HMD model to your scene, you need first to load it with th
 Most robust way is to use `ModelCache` class:
 
 ```haxe
-// Create a model cache
-var cache = new h3d.prim.ModelCache();
-// Add a model library to cache.
-// This is optional, because `loadModel` and `loadAnimation` add it to cache automatically.
-// Returns hxd.fmt.hmd.Library
-cache.loadLibrary(hxd.Res.myModel);
-// Create a model instance. Compared to manual model creation, ModelCache loads textures automatically.
-var obj = cache.loadModel(hxd.Res.myModel);
-// Load an animation.
-var anim = cache.loadAnimation(hxd.Res.myModel);
-// play it on the object
-obj.playAnimation(anim);
+    //The assets can be found under samples/skin_res
+    cache = new h3d.prim.ModelCache();
+		cache.loadLibrary(hxd.Res.Model);
+		var obj = cache.loadModel(hxd.Res.Model);
+		obj.scale(0.1);
+		s3d.addChild(obj);
+		s3d.camera.pos.set( -3, -5, 3);
+		s3d.camera.target.z += 1;
 
-// Clear the cache instance. Note that cache will dispose all cached model textures as well.
-cache.dispose();
+		var anim = cache.loadAnimation(hxd.Res.Model);
+		obj.playAnimation(anim);
+		
+		s3d.lightSystem.ambientLight.set(0, 0, 0);
+		// add lights and setup materials
+		var dir = new DirLight(new h3d.Vector( -1, 3, -10), s3d);
+		for( m in obj.getMaterials() ) {
+			var t = m.mainPass.getShader(h3d.shader.Texture);
+			if( t != null ) t.killAlpha = true;
+			m.mainPass.culling = None;
+			m.getPass("shadow").culling = None;
+		}
+		s3d.lightSystem.ambientLight.set(0.4, 0.4, 0.4);
+
+		var shadow = s3d.renderer.getPass(h3d.pass.DefaultShadowMap);
+		shadow.power = 20;
+		shadow.color.setColor(0x301030);
+		dir.enableSpecular = true;
+
+		new h3d.scene.CameraController(s3d).loadFromCamera();
 ```
 
 Another thing to note is that how texture loading resolves texture paths. First it tries to load from directly provided `texturePath`, then, if it fails - relative to passed model. E.g. in case of folder structure like that:
