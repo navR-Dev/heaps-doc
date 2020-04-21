@@ -3,11 +3,12 @@
 Because modern 3D scenes can often get large, certain optimizations need to be made to keep your application running at an acceptable framerate. One of these optimizations involves batching. Heaps offers a way to batch meshes into a single object that will reduce the amount of draw calls and keep your frame rate high.
 
 To get started you first need to create a world object.
+Note that the full working example and the resources can be found at the Heaps IO [Samples](https://github.com/HeapsIO/heaps/tree/master/samples) repository.
 ```haxe
 //The world will be divided in this many "chunks"
 var numberOfChunks = 64;
 //How big our world will be in units
-var worldSize = 256;
+var worldSize = 128;
 
 //Create our world with the supplied values.
 var world = new h3d.scene.World(numberOfChunks, worldSize, s3d);
@@ -35,7 +36,7 @@ for( i in 0...5000 )
 world.done();
 
 //Add some lighting to that our scene looks good
-new h3d.scene.DirLight(new h3d.Vector( 0.3, -0.4, -0.9), s3d);
+new h3d.scene.fwd.DirLight(new h3d.Vector( 0.3, -0.4, -0.9), s3d);
 s3d.lightSystem.ambientLight.setColor(0x909090);
 
 //Adjust the camera settings and create a controller so we can observer our scene
