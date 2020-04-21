@@ -6,6 +6,7 @@ In this case, we will use a cube as our target object.
 ## Interaction in H3D
 ```haxe
 var cube = new h3d.prim.Cube();
+var mesh = new Mesh(cube, s3d);
 var interaction = new h3d.scene.Interactive(cube.getCollider(), s3d);
 interaction.onOver = function(event) {
 	trace("over");
