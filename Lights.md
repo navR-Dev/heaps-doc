@@ -17,7 +17,7 @@ To create a point light you do the following:
 
 ```haxe
 //Create the point light by passing it our 3d scene
-var myPointLight = new h3d.scene.PointLight(s3d);
+var myPointLight = new h3d.scene.fwd.PointLight(s3d);
 //Set the position on the light
 myPointLight.x = 10;
 myPointLight.y = 10;
@@ -34,7 +34,7 @@ The following is an example of how to create a directional light
 
 ```haxe
 //Create the directional light by giving it a Vector indicating the direction in which it illuminates and a reference to our 3d scene
-var directionalLight = new h3d.scene.DirLight(new h3d.Vector(0.2, 0.3, -1), s3d);
+var directionalLight = new h3d.scene.fwd.DirLight(new h3d.Vector(0.2, 0.3, -1), s3d);
 //Set the color on the directional light
 directionalLight.color.set(0.1, 0.1, 0.1);
 ```
