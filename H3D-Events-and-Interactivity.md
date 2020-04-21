@@ -1,13 +1,12 @@
 # Events and interaction
 
 Making objects interactive is done creating a `h3d.scene.Interactive` instance. You give it a target object and attach it to a parent.
-In this case, we will use a tile as our target object.
+In this case, we will use a cube as our target object.
 
 ## Interaction in H3D
-
 ```haxe
-var tileGroup = new h2d.TileGroup(tileImage, s2d);
-var interaction = new h3d.scene.Interactive(tileGroup.getCollider(), s3d);
+var cube = new h3d.prim.Cube();
+var interaction = new h3d.scene.Interactive(cube.getCollider(), s3d);
 interaction.onOver = function(event) {
 	trace("over");
 }
