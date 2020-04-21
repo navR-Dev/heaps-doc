@@ -51,20 +51,20 @@ new h3d.scene.CameraController(s3d).loadFromCamera();
 
 ![Shadow Example](http://heaps.io/img/h3d/shadows.jpg)
 
-# Blurring Shadows
+# Shadow power
 
-To create a more realistic effect you can blur your shadows.  You do so by accessing the shadow pass from the renderer and setting the amount of passes on the blur object.
+To create a more realistic effect you can change the power of your shadows. You can do so by using the line shadow.power
  
 You can see an example here:
 
 ```haxe
-var shadow = s3d.renderer.getPass(h3d.pass.ShadowMap);
-//Increasing the amount of passes increases the amount of blur applied to the shadow
-shadow.blur.passes = 3;
+shadow.power = 10;
+shadow.color.setColor(0x301030);
+dir.enableSpecular = true;
 ```
 
-An example with shadow.blur.passes = 1;
+An example with shadow.power = 10;
 ![Shadow blurring set to 1](http://heaps.io/img/h3d/shadows_blur_1.jpg)
 
-An example with shadow.blur.passes = 10;
+An example with shadow.power = 1;
 ![Shadow blurring set to 10](http://heaps.io/img/h3d/shadows_blur_10.jpg)
