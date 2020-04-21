@@ -3,7 +3,7 @@
 You can add a Shader in H2D using `drawable.addShader`.
 
 ```haxe
-var bmp = new Bitmap(hxd.Res.tiles_png.toTile());
+var bmp = new Bitmap(hxd.Res.tiles_png.toTile(), s2d);
 var shader = new SineDeformShader();
 shader.speed = 1;
 shader.amplitude = .1;
