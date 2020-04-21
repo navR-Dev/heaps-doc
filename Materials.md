@@ -29,7 +29,7 @@ As you can see the results are not terribly impressive. Things start to look bet
 cube.addNormals();
 
 //Add a directional light to our scene
-var light = new h3d.scene.DirLight(new h3d.Vector(0.5, 0.5, -0.5), s3d);
+var light = new h3d.scene.fwd.DirLight(new h3d.Vector(0.5, 0.5, -0.5), s3d);
 ```
 
 Our cube is looking a lot better.
@@ -59,10 +59,10 @@ var tex = hxd.Res.hxlogo.toTexture();
 var mat = h3d.mat.Material.create(tex);
 
 //Create a mesh out of our geometry - and apply the material with the texture we just created to it
-var mesh = new Mesh(prim,mat, s3d);
+var mesh = new Mesh(cube, mat, s3d);
 
 //Add a directional light to our scene
-var light = new h3d.scene.DirLight(new h3d.Vector(0.5, 0.5, -0.5), s3d);
+var light = new h3d.scene.fwd.DirLight(new h3d.Vector(0.5, 0.5, -0.5), s3d);
 ```
 
 Here you can see our cube with the loaded texture applied
